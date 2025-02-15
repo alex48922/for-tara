@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sachiko&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            font-family: 'Sachiko', cursive;
+            color: white;
+            background: url('background-valentine.jpg') no-repeat center center/cover;
+            overflow: hidden;
+        }
+
+        .message {
+            font-size: 50px;
+            font-weight: bold;
+            width: 80%;
+            max-width: 900px;
+            margin-bottom: 50px;
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 1);
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="message">
+        <p>You are summer to winter heart<br>
+        From serendipity to infinity, my unending bliss<br><br>
+        It's you,<br>
+        Because no one else<br>
+        Makes sense.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Manus+Trial&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            font-family: 'Manus Trial', cursive;
+            color: yellow;
+            background: url('background-chocolate.jpg') no-repeat center center/cover;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeIn 2s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .poem {
+            font-size: 50px; /* Bigger text */
+            font-weight: bold;
+            width: 80%;
+            max-width: 800px;
+            margin-bottom: 40px;
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 1); /* Glowing yellow shadow */
+        }
+
+        .next-button {
+            font-size: 50px;
+            cursor: pointer;
+            animation: shake 0.7s infinite alternate;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 1); /* Glowing shadow for arrow */
+        }
+
+        @keyframes shake {
+            from { transform: translateX(-5px); }
+            to { transform: translateX(5px); }
+        }
+
+        /* White heart rain effect */
+        .heart {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            opacity: 3;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            from { transform: translateY(-100vh) rotate(0deg); opacity: 2; }
+            to { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
+        }
+    </style>
+</head>
+<body>
+    <div class="poem">
+        <p>You are the smile I never own,<br>
+        A love I feel, yet stay unknown.<br>
+        You are the hope in my lonely days,<br>
+        A dream I hold in endless ways.</p>
+    </div>
+
+    <div class="next-button" onclick="nextPage()">➡️</div>
+
+    <script>
+        function nextPage() {
+            window.location.href = "teddy.html";
+        }
+
+        function createHearts() {
+            for (let i = 0; i < 15; i++) {
+                let heart = document.createElement("img");
+                heart.src = "whiteheart.png";
+                heart.className = "heart";
+                document.body.appendChild(heart);
+
+                let startX = Math.random() * window.innerWidth;
+                let duration = Math.random() * 3 + 2;
+
+                heart.style.left = `${startX}px`;
+                heart.style.animationDuration = `${duration}s`;
+                heart.style.top = "-50px";
+
+                setTimeout(() => heart.remove(), duration * 1000);
+            }
+        }
+
+        setInterval(createHearts, 500);
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pearlye&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            font-family: 'Pearlye', cursive;
+            color: white;
+            background: url('background-promise.jpg') no-repeat center center/cover;
+            overflow: hidden;
+        }
+
+        .message {
+            font-size: 50px;
+            font-weight: bold;
+            width: 80%;
+            max-width: 900px;
+            margin-bottom: 50px;
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 1);
+            opacity: 0;
+            transform: translateY(-100px);
+            animation: dropIn 1s ease-out forwards;
+        }
+
+        @keyframes dropIn {
+            from {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .next-button {
+            font-size: 50px;
+            cursor: pointer;
+            animation: shake 0.7s infinite alternate;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
+        }
+
+        @keyframes shake {
+            from { transform: translateX(-5px); }
+            to { transform: translateX(5px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="message">
+        <p>Dear Rentee,<br>
+        The heart is yours, now and forever,<br>
+        A love so deep, it will never sever.<br>
+        A sweet dream, that has no end,<br>
+        Whispering your name, again and again.</p>
+    </div>
+
+    <div class="next-button" onclick="nextPage()">➡️</div>
+
+    <script>
+        function nextPage() {
+            window.location.href = "hug.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiss Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Aquarelle&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            font-family: 'Aquarelle', cursive;
+            color: white;
+            background: url('background-kiss.jpg') no-repeat center center/cover;
+            overflow: hidden;
+        }
+
+        .message {
+            font-size: 50px;
+            font-weight: bold;
+            width: 80%;
+            max-width: 900px;
+            margin-bottom: 50px;
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 1);
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .next-button {
+            font-size: 50px;
+            cursor: pointer;
+            animation: shake 0.7s infinite alternate;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
+        }
+
+        @keyframes shake {
+            from { transform: translateX(-5px); }
+            to { transform: translateX(5px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="message">
+        <p>I wish I were one of your tears,<br>
+        So I could be born in your eyes<br>
+        and fade away on your lips.</p>
+    </div>
+
+    <div class="next-button" onclick="nextPage()">➡️</div>
+
+    <script>
+        function nextPage() {
+            window.location.href = "valentine.html";
+        }
+    </script>
+</body>
+</html>

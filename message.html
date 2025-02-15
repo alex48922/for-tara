@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Message</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lovers+Quarrel&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            font-family: 'Lovers Quarrel', cursive;
+            color: white;
+            background: url('background-message.jpg') no-repeat center center/cover;
+            opacity: 0;  /* Initially hidden */
+            animation: fadeIn 2s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .poem {
+            font-size: 60px; /* Doubled size */
+            width: 80%;
+            max-width: 800px;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        .next-button {
+            font-size: 50px;
+            cursor: pointer;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="poem">
+        <p>In tender twilight, petals unfold,<br>
+        Whispers of sweetness form young to old.<br>
+        My heart skips a beat, with every glance,<br>
+        Your smile ignites a joyful dance.</p>
+    </div>
+    <div class="next-button" onclick="nextPage()">➡️</div>
+
+    <script>
+        function nextPage() {
+            window.location.href = "propose.html";
+        }
+    </script>
+</body>
+</html>

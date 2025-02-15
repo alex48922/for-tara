@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Message for Tara</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Channel&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            color: white;
+            background: url('background.jpg') no-repeat center center/cover;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 60px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-family: 'Channel', cursive;
+        }
+        .static-text {
+            font-size: 30px;
+            margin-bottom: 5px;
+            font-family: 'Channel', cursive;
+        }
+        .typing-text {
+            font-size: 30px;
+            margin-bottom: 20px;
+            font-family: 'Channel', cursive;
+            white-space: pre-wrap;
+            border-right: 2px solid white;
+            display: inline-block;
+            overflow: hidden;
+            width: 0;
+            animation: typing 3s steps(40, end) forwards, blink 0.8s infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+        .treasure-box {
+            font-size: 80px;
+            cursor: pointer;
+            animation: bounce 1s infinite alternate;
+        }
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        /* Firework Main Explosion */
+        .firework {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            opacity: 0;
+            animation: explode 1s ease-out forwards;
+        }
+        @keyframes explode {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(8); }
+        }
+
+        /* Small Particles from Explosion */
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            opacity: 0;
+            animation: particle-animation 1.2s ease-out forwards;
+        }
+        @keyframes particle-animation {
+            0% { opacity: 1; transform: translate(0, 0) scale(1); }
+            100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(2); }
+        }
+
+        /* Fade-out effect */
+        .fade-out {
+            animation: fadeout 2s ease-in-out forwards;
+        }
+        @keyframes fadeout {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <p class="static-text">Hiii</p> <!-- Hiii added above TARA without animation -->
+    <h1>TARA</h1>
+    <p class="typing-text">A message has been encrypted just for you...
+that only you can unlock.</p>
+    <div class="treasure-box" onclick="startFireworks()">📦</div>
+
+    <script>
+        function getRandomColor() {
+            const colors = ["red", "blue", "green", "yellow", "purple", "orange", "pink"];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function startFireworks() {
+            document.querySelector('.treasure-box').style.display = "none";
+
+            function createFirework(x, y) {
+                let firework = document.createElement("div");
+                firework.className = "firework";
+                firework.style.background = getRandomColor();
+                firework.style.left = `${x}px`;
+                firework.style.top = `${y}px`;
+                document.body.appendChild(firework);
+
+                setTimeout(() => {
+                    firework.remove();
+                    createParticles(x, y);
+                }, 1000);
+            }
+
+            function createParticles(x, y) {
+                for (let i = 0; i < 15; i++) {  
+                    let particle = document.createElement("div");
+                    particle.className = "particle";
+                    particle.style.background = getRandomColor();
+                    document.body.appendChild(particle);
+
+                    let angle = Math.random() * 2 * Math.PI;
+                    let distance = Math.random() * 80 + 30;  
+                    let xMove = Math.cos(angle) * distance;
+                    let yMove = Math.sin(angle) * distance;
+
+                    particle.style.setProperty("--x", `${xMove}px`);
+                    particle.style.setProperty("--y", `${yMove}px`);
+                    particle.style.left = `${x}px`;
+                    particle.style.top = `${y}px`;
+
+                    setTimeout(() => particle.remove(), 1200);
+                }
+            }
+
+            function triggerFireworks() {
+                for (let i = 0; i < 15; i++) {  
+                    let x = Math.random() * window.innerWidth;
+                    let y = Math.random() * window.innerHeight * 0.8;
+                    setTimeout(() => createFirework(x, y), i * 200);
+                }
+            }
+
+            triggerFireworks();
+
+            setTimeout(() => {
+                document.body.classList.add("fade-out");
+                setTimeout(() => {
+                    window.location.href = "message.html";
+                }, 2000);
+            }, 4000);
+        }
+    </script>
+</body>
+</html>

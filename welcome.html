@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            color: white;
+            background: url('background-welcome.jpg') no-repeat center center/cover;
+        }
+        h1 {
+            font-size: 50px;
+            font-family: Arial, sans-serif;
+            margin-bottom: 20px;
+        }
+        .question-box {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-family: Arial, sans-serif;
+        }
+        input {
+            font-size: 18px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .submit-button {
+            font-size: 20px;
+            padding: 10px 25px;
+            border: none;
+            background-color: #ff4081;
+            color: white;
+            cursor: pointer;
+            border-radius: 10px;
+            font-family: Arial, sans-serif;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+        .submit-button:hover {
+            background-color: #d81b60;
+        }
+        .error-message {
+            color: red;
+            font-size: 18px;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Give Your Identity</h1>
+    <div class="question-box">Which Vitamin are you?</div>
+    <input type="text" id="answer" placeholder="Enter your answer">
+    <button class="submit-button" onclick="checkAnswer()">Submit</button>
+    <div class="error-message" id="error">Write the correct answer!</div>
+
+    <script>
+        function checkAnswer() {
+            let answer = document.getElementById("answer").value.trim();
+            if (answer === "T") {
+                window.location.href = "index.html";
+            } else {
+                document.getElementById("error").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
